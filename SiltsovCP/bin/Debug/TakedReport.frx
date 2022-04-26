@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="04/25/2022 19:29:31" ReportInfo.Modified="04/26/2022 15:06:09" ReportInfo.CreatorVersion="2013.2.3.0">
+  <Dictionary>
+    <BusinessObjectDataSource Name="TTVList" ReferenceName="TTVList" DataType="System.Collections.Generic.List`1[[SiltsovCP.Form8+TempTupleView, SiltsovCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+      <Column Name="Name" DataType="System.String"/>
+      <Column Name="Count" DataType="System.Int32"/>
+      <Column Name="Price" DataType="System.Decimal"/>
+      <Column Name="TotalPrice" DataType="System.Decimal"/>
+      <Column Name="SPrice" DataType="System.String"/>
+      <Column Name="STotalPrice" DataType="System.String"/>
+    </BusinessObjectDataSource>
+    <Parameter Name="Manufacturer" DataType="System.String"/>
+    <Parameter Name="ProductAdmission" DataType="System.String"/>
+    <Parameter Name="Shop" DataType="System.String"/>
+    <Parameter Name="FullPrice" DataType="System.String"/>
+  </Dictionary>
+  <ReportPage Name="Page1">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="132.3">
+      <RichObject Name="Rich1" Left="585.9" Top="9.45" Width="85.05" Height="18.9" Text="{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1049{\fonttbl{\f0\fnil\fcharset204 Tahoma;}{\f1\fnil\fcharset0 Tahoma;}}&#13;&#10;{\*\generator Riched20 10.0.19041}\viewkind4\uc1 &#13;&#10;\pard\f0\fs17\lang1058\'c2\'b3\'e4 \f1\lang1033 [Date] \f0\lang1049\par&#13;&#10;}&#13;&#10;"/>
+      <RichObject Name="Rich2" Left="292.95" Top="9.45" Width="132.3" Height="18.9" Text="{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1049{\fonttbl{\f0\froman\fprq2\fcharset204 Times New Roman;}{\f1\fnil\fcharset1 Segoe UI Symbol;}{\f2\fnil\fcharset204 Tahoma;}}&#13;&#10;{\*\generator Riched20 10.0.19041}\viewkind4\uc1 &#13;&#10;\pard\f0\fs20\'cd\'c0\'ca\'cb\'c0\'c4\'cd\'c0 \f1\lang1058\u8470?\f0  \f2\fs17\lang1049\par&#13;&#10;}&#13;&#10;"/>
+      <RichObject Name="Rich3" Top="75.6" Width="292.95" Height="37.8" Text="{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1049{\fonttbl{\f0\froman\fprq2\fcharset204 Times New Roman;}{\f1\froman\fprq2\fcharset0 Times New Roman;}{\f2\fnil\fcharset204 Tahoma;}}&#13;&#10;{\*\generator Riched20 10.0.19041}\viewkind4\uc1 &#13;&#10;\pard\brdrb\brdrs\brdrw10\brsp20 \widctlpar\b\f0\fs22\'ca\'ee\'ec\'f3:\b0  \'cc\'e0\'e3\'e0\'e7\'e8\'ed\'f3 \f1\lang1033 &quot;[Shop]&quot;\f0\lang1049\par&#13;&#10;\b\'c2\'b3\'e4 \'ea\'ee\'e3\'ee\f1\lang1033 :\b0\f0\lang1058\'d1\'e8\'eb\'fc\'f6\'ee\'e2\'e0 \'cc\'e8\'ea\'e8\'f2\'e8 \'c2\'ee\'eb\'ee\'e4\'e8\'ec\'e8\'f0\'ee\'e2\'e8\'f7\'e0\f2\fs17\lang1049\par&#13;&#10;}&#13;&#10;"/>
+      <TextObject Name="Text2" Left="396.9" Top="9.45" Width="103.95" Height="18.9" Text="[ProductAdmission]" VertAlign="Center"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="136.3" Width="718.2" Height="18.9">
+      <TextObject Name="Text3" Left="85.05" Width="207.9" Height="18.9" Border.Lines="All" Text="Назва"/>
+      <TextObject Name="Text5" Left="292.95" Width="94.5" Height="18.9" Border.Lines="All" Text="Кількість"/>
+      <TextObject Name="Text7" Left="387.45" Width="103.95" Height="18.9" Border.Lines="All" Text="Ціна за 1 шт."/>
+      <TextObject Name="Text9" Left="491.4" Width="103.95" Height="18.9" Border.Lines="All" Text="Ітогова ціна"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="159.2" Width="718.2" Height="18.9" DataSource="TTVList">
+      <TextObject Name="Text1" Left="85.05" Width="207.9" Height="18.9" Border.Lines="All" Text="[TTVList.Name]"/>
+      <TextObject Name="Text4" Left="292.95" Width="94.5" Height="18.9" Border.Lines="All" Text="[TTVList.Count]"/>
+      <TextObject Name="Text6" Left="387.45" Width="103.95" Height="18.9" Border.Lines="All" Text="[TTVList.SPrice]"/>
+      <TextObject Name="Text8" Left="491.4" Width="103.95" Height="18.9" Border.Lines="All" Text="[TTVList.STotalPrice]"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="182.1" Width="718.2" Height="103.95">
+      <RichObject Name="Rich4" Top="28.35" Width="746.55" Height="75.6" Text="{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1049{\fonttbl{\f0\froman\fprq2\fcharset204 Times New Roman;}{\f1\fnil\fcharset204 Tahoma;}}&#13;&#10;{\*\generator Riched20 10.0.19041}\viewkind4\uc1 &#13;&#10;\pard\widctlpar\sb120\f0\fs20\'c7\'e4\'e0\'e2: _______________   ____________________________      \'cf\'f0\'e8\'e9\'ed\'ff\'e2: _______________   ____________________________\par&#13;&#10;&#13;&#10;\pard\widctlpar\fs16                         \'ef\'b3\'e4\'ef\'e8\'f1                                          \'cf\'b2\'c1                                                                    \'ef\'b3\'e4\'ef\'e8\'f1                                         \'cf\'b2\'c1\fs20\par&#13;&#10;\par&#13;&#10;&#13;&#10;\pard\f1\fs17\par&#13;&#10;}&#13;&#10;"/>
+      <RichObject Name="Rich5" Left="434.7" Width="151.2" Height="18.9" Text="{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1049{\fonttbl{\f0\fnil\fcharset204 Arial;}{\f1\fnil\fcharset0 Arial;}{\f2\fnil\fcharset204 Tahoma;}}&#13;&#10;{\*\generator Riched20 10.0.19041}\viewkind4\uc1 &#13;&#10;\pard\f0\fs20\lang1058\'d3\'f1\'fc\'ee\'e3\'ee: \f1\lang1033 [FullPrice]\f2\fs17\lang1049\par&#13;&#10;}&#13;&#10;"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

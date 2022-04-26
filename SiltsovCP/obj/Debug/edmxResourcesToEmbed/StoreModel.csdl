@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StoreBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Product__Categor__29572725" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="ListOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__ListOrder__Order__36B12243" FromRole="ListOrder" ToRole="Order" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__ListOrder__Produ__35BCFE0A" FromRole="ListOrder" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Manufacturer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Product__Manufac__2A4B4B5E" FromRole="Manufacturer" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ShopId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ListOrder" Relationship="Self.FK__ListOrder__Order__36B12243" FromRole="Order" ToRole="ListOrder" />
+    <NavigationProperty Name="Shop" Relationship="Self.FK__Order__ShopId__32E0915F" FromRole="Order" ToRole="Shop" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="ManufacturerId" Type="Int32" Nullable="false" />
+    <Property Name="Weight" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__29572725" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="ListOrder" Relationship="Self.FK__ListOrder__Produ__35BCFE0A" FromRole="Product" ToRole="ListOrder" />
+    <NavigationProperty Name="Manufacturer" Relationship="Self.FK__Product__Manufac__2A4B4B5E" FromRole="Product" ToRole="Manufacturer" />
+    <NavigationProperty Name="ProductAdmission" Relationship="Self.FK__ProductAd__Produ__300424B4" FromRole="Product" ToRole="ProductAdmission" />
+    <NavigationProperty Name="ProductAmount" Relationship="Self.FK__ProductAm__Produ__2D27B809" FromRole="Product" ToRole="ProductAmount" />
+  </EntityType>
+  <EntityType Name="ProductAdmission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__ProductAd__Produ__300424B4" FromRole="ProductAdmission" ToRole="Product" />
+    <Property Name="TakedDate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="ProductAmount">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__ProductAm__Produ__2D27B809" FromRole="ProductAmount" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Shop">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__Order__ShopId__32E0915F" FromRole="Shop" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__Product__Categor__29572725">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ListOrder__Order__36B12243">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="ListOrder" Type="Self.ListOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ListOrder">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ListOrder__Produ__35BCFE0A">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ListOrder" Type="Self.ListOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ListOrder">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Manufac__2A4B4B5E">
+    <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ManufacturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__ShopId__32E0915F">
+    <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ShopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductAd__Produ__300424B4">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductAdmission" Type="Self.ProductAdmission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductAdmission">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductAm__Produ__2D27B809">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductAmount" Type="Self.ProductAmount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductAmount">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StoreContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="ListOrder" EntityType="Self.ListOrder" />
+    <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" />
+    <EntitySet Name="Order" EntityType="Self.Order" />
+    <EntitySet Name="Product" EntityType="Self.Product" />
+    <EntitySet Name="ProductAdmission" EntityType="Self.ProductAdmission" />
+    <EntitySet Name="ProductAmount" EntityType="Self.ProductAmount" />
+    <EntitySet Name="Shop" EntityType="Self.Shop" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK__Product__Categor__29572725" Association="Self.FK__Product__Categor__29572725">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ListOrder__Order__36B12243" Association="Self.FK__ListOrder__Order__36B12243">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="ListOrder" EntitySet="ListOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ListOrder__Produ__35BCFE0A" Association="Self.FK__ListOrder__Produ__35BCFE0A">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ListOrder" EntitySet="ListOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Manufac__2A4B4B5E" Association="Self.FK__Product__Manufac__2A4B4B5E">
+      <End Role="Manufacturer" EntitySet="Manufacturer" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__ShopId__32E0915F" Association="Self.FK__Order__ShopId__32E0915F">
+      <End Role="Shop" EntitySet="Shop" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductAd__Produ__300424B4" Association="Self.FK__ProductAd__Produ__300424B4">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductAdmission" EntitySet="ProductAdmission" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductAm__Produ__2D27B809" Association="Self.FK__ProductAm__Produ__2D27B809">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductAmount" EntitySet="ProductAmount" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
